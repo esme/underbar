@@ -81,25 +81,25 @@
       });
 
       it('passes for a collection of all-truthy results', function() {
-        expect(_.every([true, {}, 1], _.identity)).to.be.true;
+        expect(_.every([true, {}, 1], _.isTruthy)).to.be.true;
       });
 
       it('fails for a collection of all-falsy results', function() {
-        expect(_.every([null, 0, undefined], _.identity)).to.be.false;
+        expect(_.every([null, 0, undefined], _.isTruthy)).to.be.false;
       });
 
       it('fails for a collection containing mixed falsy and truthy results', function() {
-        expect(_.every([true, false, 1], _.identity)).to.be.false;
-        expect(_.every([1, undefined, true], _.identity)).to.be.false;
+        expect(_.every([true, false, 1], _.isTruthy)).to.be.false;
+        expect(_.every([1, undefined, true], _.isTruthy)).to.be.false;
       });
 
       it('should work when provided a collection containing undefined values', function() {
-        expect(_.every([undefined, undefined, undefined], _.identity)).to.be.false;
+        expect(_.every([undefined, undefined, undefined], _.isTruthy)).to.be.false;
       });
 
       it('should cast the result to a boolean', function() {
-        expect(_.every([1], _.identity)).to.be.true;
-        expect(_.every([0], _.identity)).to.be.false;
+        expect(_.every([1], _.isTruthy)).to.be.true;
+        expect(_.every([0], _.isTruthy)).to.be.false;
       });
 
       it('should handle callbacks that manipulate the input', function() {
@@ -128,19 +128,19 @@
       });
 
       it('should pass for a collection of all-truthy results', function() {
-        expect(_.some([true, {}, 1], _.identity)).to.be.true;
+        expect(_.some([true, {}, 1], _.isTruthy)).to.be.true;
       });
 
       it('should fail for a collection of all-falsy results', function() {
-        expect(_.some([null, 0, undefined], _.identity)).to.be.false;
+        expect(_.some([null, 0, undefined], _.isFalsy)).to.be.true;
       });
 
       it('should pass for a collection containing mixed falsy and truthy results', function() {
-        expect(_.some([true, false, 1], _.identity)).to.be.true;
+        expect(_.some([true, false, 1], _.isTruthy)).to.be.true;
       });
 
       it('should pass for a set containing one truthy value that is a string', function() {
-        expect(_.some([null, 0, 'yes', false], _.identity)).to.be.true;
+        expect(_.some([null, 0, 'yes', false], _.isTruthy)).to.be.true;
       });
 
       it('should fail for a set containing no matching values', function() {
@@ -152,8 +152,8 @@
       });
 
       it('should cast the result to a boolean', function() {
-        expect(_.some([1], _.identity)).to.be.true;
-        expect(_.some([0], _.identity)).to.be.false;
+        expect(_.some([1], _.isTruthy)).to.be.true;
+        expect(_.some([0], _.isTruthy)).to.be.false;
       });
 
       it('should work when no callback is provided', function() {
